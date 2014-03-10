@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="format-detection" content="telephone=no" />
+    <!-- Load stylesheets for the aplication -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Temperaturas</title>
@@ -11,6 +12,7 @@
 </head>
 <body>
 
+    <!-- Navigation bar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -31,7 +33,9 @@
         </div>
         </div>
     </div>
+    <!-- Close Navigation bar -->
 
+    <!-- UI element where we display the temperature-->
     <div id="content" class="container">
         <h1>Temperatura actual</h1>
         <div class="circle">
@@ -41,8 +45,10 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- We connect to the socket running on a server -->
     <script src="http://54.211.133.232:8080/socket.io/socket.io.js"></script>
     <script>
+        //We make the connection to the socket and get the data in real time
         var socket = io.connect('http://54.211.133.232:8080');
           socket.on(1234, function (data) {
             console.log(data);

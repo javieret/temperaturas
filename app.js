@@ -1,3 +1,4 @@
+//Variables de inicialización
 var express = require('express');
 var routes  = require('./routes');
 var http    = require('http');
@@ -6,6 +7,8 @@ var app     = express()
 , server    = require('http').createServer(app)
 , io        = require('socket.io').listen(server);
 
+
+//Configuración por default del framework
 server.listen(8080);
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -22,15 +25,19 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.errorHandler());
 
+
+//Petición GET para hacer un render del archivo index.html
 app.get('/', function(req, res){
 	res.sendfile(__dirname + '/public/index.html');
 });
 
+//Función que esta enviando la temperaturas (random) a través de un socket
 setInterval(function(){
 	io.sockets.emit(1234, JSON.stringify(Math.floor((Math.random()*40)+1)));
 },3000);
 
 
+//Aquí es donde se levanta el servidor para que este funcionando
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
