@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Temperaturas</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-  	<script src="http://localhost:8080/socket.io/socket.io.js"></script>
-	<script>
-        var socket = io.connect(':8080');
+    <style>
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Temperaturas</a>
+            </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+
+    <div id="content" class="container">
+        <h1>Temperatura actual</h1>
+        <div class="circle">
+            <span id="temperatura"></span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="http://54.211.133.232:8080/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://54.211.133.232:8080');
           socket.on(1234, function (data) {
-          	console.log(data);
+            console.log(data);
+            $("#temperatura").html(data);
           });
-	</script>
-  </body>
+    </script>
+</body>
 </html>
