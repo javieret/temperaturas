@@ -31,11 +31,9 @@ app.get('/', function(req, res){
 	res.sendfile(__dirname + '/public/index.html');
 });
 
-//Función que esta enviando la temperaturas (random) a través de un socket
-setInterval(function(){
-	io.sockets.emit(1234, JSON.stringify(Math.floor((Math.random()*40)+1)));
-},3000);
-
+app.post('/add', function(req, res){
+	io.sockets.emit(1234, JSON.stringify(req.body.temp));
+});
 
 //Aquí es donde se levanta el servidor para que este funcionando
 http.createServer(app).listen(app.get('port'), function(){
