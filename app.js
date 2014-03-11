@@ -33,9 +33,7 @@ app.get('/', function(req, res){
 
 app.post('/add', function(req, res){
 	io.sockets.emit(1234, req.body.temp);
-	response.writeHead(200, {
-    	"Content-Type": "text/plain"
-  	});
+	res.send("Temperatura recibida = "+req.body.temp);
 });
 
 //Aquí es donde se levanta el servidor para que este funcionando
