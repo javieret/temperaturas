@@ -33,7 +33,7 @@ app.get('/', function(req, res){
 
 app.post('/add', function(req, res){
 	io.sockets.emit(1234, req.body.temp);
-	response.writeHead(200, {
+	res.writeHead(200, {
     	"Content-Type": "text/plain"
   	});
 });
