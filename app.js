@@ -36,7 +36,7 @@ app.post('/add', function(req, res){
 	res.send ("Temperatura = "+req.body.temp);
 });
 
-app.post('/on', function(req, res){
+app.get('/on', function(req, res){
 	console.log("llega petición de on/off");
 	res.send ("On/of");
 });
