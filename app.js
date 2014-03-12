@@ -37,7 +37,7 @@ app.post('/add', function(req, res){
 });
 
 app.get('/on', function(req, res){
-	console.log("llega petición de on/off");
+	console.log("llega petición de on");
 	res.send ("On/of");
 });
 
