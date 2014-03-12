@@ -36,6 +36,11 @@ app.post('/add', function(req, res){
 	res.send ("Temperatura = "+req.body.temp);
 });
 
+app.post('/on', function(req, res){
+	console.log("llega petición de on/off");
+	res.send ("On/of");
+});
+
 //Aquí es donde se levanta el servidor para que este funcionando
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

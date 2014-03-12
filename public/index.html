@@ -41,7 +41,7 @@
             <div id="temperatura"></div>
         </div>
         <div class="switch demo1">
-            <input type="checkbox">
+            <input id="chck" type="checkbox">
             <label></label>
         </div>
     </div>
@@ -63,8 +63,16 @@
     <script>
 
         $(document).ready(function(){
-            $('#button').on('click', function(){
-                $(this).toggleClass('on');
+            $( ".demo1" ).click(function() {
+                alert("hola");
+                $.ajax({
+                    dataType: "jsonp",
+                    url:   'http://54.211.133.232/on',
+                    type:  'post',
+                    success:  function (response) {
+                        console.log(response);
+                    }
+                });
             });
         });
 
