@@ -1,5 +1,6 @@
 //Variables de inicialización
 var express = require('express');
+var query   = require('url').parse(req.url,true).query;
 var routes  = require('./routes');
 var http    = require('http');
 var path    = require('path');
@@ -42,6 +43,7 @@ app.post('/add', function(req, res){
 app.get('/on', function(req, res){
 	var status = req.params;
 	console.log(status);
+	console.log(query);
 	if(status == 1){
 		res.send ("status=1");
 	}else{
