@@ -40,7 +40,7 @@ app.post('/add', function(req, res){
 
 //Servicio de prendido y apagado
 app.get('/on', function(req, res){
-	var status = req.params.status;
+	var status = req.params;
 	console.log(status);
 	if(status == 1){
 		res.send ("status=1");
