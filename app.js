@@ -31,14 +31,21 @@ app.get('/', function(req, res){
 	res.sendfile(__dirname + '/public/index.html');
 });
 
+//Servicio de temperaturas
 app.post('/add', function(req, res){
 	io.sockets.emit(1234, req.body.temp);
 	res.send ("Temperatura = "+req.body.temp);
 });
 
+
+//Servicio de prendido y apagado
 app.get('/on', function(req, res){
-	console.log("llega petición de on");
-	res.send ("On/of");
+	var status = req.params.status;
+	if(status == 1){
+		res.send ("status=1");
+	}else{
+		res.send ("status=0");
+	}
 });
 
 //Aquí es donde se levanta el servidor para que este funcionando
