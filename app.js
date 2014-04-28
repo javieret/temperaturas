@@ -54,6 +54,7 @@ app.get('/on', function(req, res){
 });
 
 app.get('/status', function(req, res){
+	console.log("status"+ status);
 	if(status == 1){
 		res.send ("status=1");
 	}else{
