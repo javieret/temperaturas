@@ -1,6 +1,5 @@
 //Variables de inicialización
 var express = require('express');
-var query   = require('url').parse(req.url,true).query;
 var routes  = require('./routes');
 var http    = require('http');
 var path    = require('path');
@@ -41,6 +40,7 @@ app.post('/add', function(req, res){
 
 //Servicio de prendido y apagado
 app.get('/on', function(req, res){
+	var query = require('url').parse(req.url,true).query;
 	var status = req.params;
 	console.log(status);
 	console.log(query);
