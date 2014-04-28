@@ -38,17 +38,16 @@ app.post('/add', function(req, res){
 });
 
 
-var status = 0;
+var status;
 //Servicio de prendido y apagado
 app.get('/on', function(req, res){
 	var query = require('url').parse(req.url,true).query;
-	var status = req.params;
 	console.log(query.status);
 	if(query.status == 1){
-		status =1;
+		status = 1;
 		res.send ("status=1");
 	}else{
-		status =0;
+		status = 0;
 		res.send ("status=0");
 	}
 });
