@@ -61,7 +61,7 @@ app.get('/temperatura', function(req, res){
 });
 
 app.get('/getTemperatura', function(req, res){
-	res.send ("status="+temperatura);
+	res.send ("temperatura="+temperatura);
 });
 
 app.get('/status', function(req, res){
