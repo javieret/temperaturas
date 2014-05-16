@@ -69,7 +69,7 @@ app.get('/temperatura', function(req, res){
 
 //Obtener Todas Las Temperaturas
 app.get('/getAll', function(req, res){
-	res.send ("temperatura=1");
+	return res.send(JSON.stringify(temperatura_array));
 });
 
 
