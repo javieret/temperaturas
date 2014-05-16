@@ -38,7 +38,7 @@ app.post('/add', function(req, res){
 });
 
 
-var status;
+var status = 0;
 //Servicio de prendido y apagado
 app.get('/on', function(req, res){
 	var query = require('url').parse(req.url,true).query;
@@ -50,6 +50,18 @@ app.get('/on', function(req, res){
 		status = 0;
 		res.send ("status=0");
 	}
+});
+
+var temperatura = 0;
+//Servicio de prendido y apagado
+app.get('/temperatura', function(req, res){
+	var query = require('url').parse(req.url,true).query;
+	temperatura = query.status;
+	res.send ("temperatura=1");
+});
+
+app.get('/getTemperatura', function(req, res){
+	res.send ("status="+temperatura);
 });
 
 app.get('/status', function(req, res){
