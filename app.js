@@ -6,6 +6,7 @@ var path    = require('path');
 var app     = express()
 , server    = require('http').createServer(app)
 , io        = require('socket.io').listen(server);
+moment      = require('moment');
 
 
 //Configuración por default del framework
@@ -53,17 +54,32 @@ app.get('/on', function(req, res){
 });
 
 var temperatura = 0;
+var element = {}, temperatura_array = [];
 //Servicio de prendido y apagado
 app.get('/temperatura', function(req, res){
 	var query = require('url').parse(req.url,true).query;
 	temperatura = query.status;
+	element = {};
+	element.temperatura = query.status;
+	element.date = moment().format('YYYY-M-DD HH:mm:ss');
+	temperatura_array.push(element);
 	res.send ("temperatura=1");
 });
 
+
+//Obtener Todas Las Temperaturas
+app.get('/getAll', function(req, res){
+	res.send(JSON.stringify(temperatura_array));
+});
+
+
+//Obtener temperatura a la que el usuario prendió el clima
 app.get('/getTemperatura', function(req, res){
 	res.send ("temperatura="+temperatura);
 });
 
+
+//Obtener status de prendido/apago
 app.get('/status', function(req, res){
 	console.log("status"+ status);
 	if(status == 1){
